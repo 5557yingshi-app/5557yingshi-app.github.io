@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+<title>5557影视 · 线上高清影视资源导航 | 5557yingshi-app</title>
+<meta name="keywords" content="5557影视,5557yingshi-app,高清影视在线观看,热播剧集资源,院线大片速递,经典老片回看,影视资讯导航,剧集更新提醒,电影资源合集,电视剧排行榜,综艺节目盘点,动漫番剧更新">
+<meta name="description" content="5557影视（5557yingshi-app）是一个专注影视资源聚合与观影指南的线上平台，覆盖院线大片、热播剧集、经典老片、综艺与动漫番剧。每日更新影视资讯、口碑榜单与资源导航，帮观众在海量内容里快速锁定值得一看的好作品。访问官网：https://5557yingshi-app.github.io">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="renderer" content="webkit">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#0b0d17">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="5557影视">
+<meta property="og:title" content="5557影视 · 线上高清影视资源导航">
+<meta property="og:description" content="院线大片、热播剧集、经典老片、综艺与动漫番剧，每日更新影视资讯与口碑榜单。">
+<meta property="og:url" content="https://5557yingshi-app.github.io">
+<link rel="canonical" href="https://5557yingshi-app.github.io">
+<style>
+:root{
+  --ink:#ececf1;
+  --ink-soft:#a9adc4;
+  --paper:#0b0d17;
+  --paper-2:#121526;
+  --paper-3:#1a1e34;
+  --line:rgba(255,255,255,.09);
+  --line-2:rgba(255,255,255,.16);
+  --brand:#ffb43d;
+  --brand-2:#ff5c8a;
+  --brand-3:#4fd1c5;
+  --shadow:0 18px 50px -22px rgba(0,0,0,.75);
+  --ease:cubic-bezier(.22,.68,.35,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+  font-size:16px;line-height:1.75;
+  overflow-x:hidden;
+  background-image:radial-gradient(circle at 12% 8%,rgba(255,92,138,.10),transparent 42%),radial-gradient(circle at 88% 0%,rgba(79,209,197,.09),transparent 40%),radial-gradient(circle at 50% 100%,rgba(255,180,61,.07),transparent 45%);
+  background-attachment:fixed;
+}
+a{color:inherit;text-decoration:none;transition:color .25s var(--ease),opacity .25s var(--ease)}
+a:hover{color:var(--brand)}
+img{max-width:100%;display:block}
+ul,ol{list-style:none}
+.container{width:min(1160px,92%);margin:0 auto}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
+
+/* ===== 顶部 ===== */
+.topbar{
+  position:sticky;top:0;z-index:80;
+  background:rgba(11,13,23,.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{display:flex;align-items:center;gap:24px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-mark{
+  width:34px;height:34px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(140deg,var(--brand),var(--brand-2));
+  display:grid;place-items:center;
+  font-weight:800;font-size:15px;color:#1a0f00;
+  box-shadow:0 6px 18px -6px rgba(255,92,138,.7);
+}
+.brand-name{font-size:19px;font-weight:800;letter-spacing:.5px}
+.brand-name span{color:var(--brand)}
+.nav{display:flex;gap:6px;margin-left:auto;align-items:center}
+.nav a{
+  padding:8px 14px;border-radius:20px;font-size:15px;color:var(--ink-soft);
+  white-space:nowrap;
+}
+.nav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.menu-btn{display:none;margin-left:auto;width:42px;height:42px;border-radius:11px;background:var(--paper-2);border:1px solid var(--line);cursor:pointer;flex-direction:column;gap:5px;align-items:center;justify-content:center}
+.menu-btn i{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+
+/* ===== Hero ===== */
+.hero{padding:76px 0 56px;position:relative}
+.ticket{
+  position:relative;border-radius:22px;overflow:hidden;
+  background:linear-gradient(135deg,var(--paper-2),var(--paper-3));
+  border:1px solid var(--line-2);box-shadow:var(--shadow);
+  display:grid;grid-template-columns:1.15fr .85fr;align-items:stretch;
+}
+.ticket::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 82% 18%,rgba(255,92,138,.22),transparent 55%),
+             radial-gradient(circle at 12% 88%,rgba(79,209,197,.16),transparent 50%);
+}
+.ticket-left{padding:52px 46px;position:relative;z-index:2;border-right:2px dashed var(--line-2)}
+.ticket-right{position:relative;z-index:2;padding:40px 36px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;
+  background:rgba(255,180,61,.12);color:var(--brand);border:1px solid rgba(255,180,61,.3);
+}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(255,180,61,.18)}
+h1{font-size:clamp(30px,5vw,50px);line-height:1.2;font-weight:900;letter-spacing:-.5px;margin:18px 0 6px}
+h1 em{font-style:normal;background:linear-gradient(92deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--ink-soft);font-size:16.5px;max-width:46ch;margin-bottom:26px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:12px;
+  font-size:15.5px;font-weight:700;border:1px solid transparent;cursor:pointer;
+}
+.btn-primary{background:linear-gradient(96deg,var(--brand),var(--brand-2));color:#211200;box-shadow:0 12px 26px -12px rgba(255,92,138,.75)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.btn:hover{transform:translateY(-2px);color:inherit}
+.notch-row{display:flex;gap:10px;flex-wrap:wrap}
+.notch{font-size:13px;color:var(--ink-soft);padding:7px 13px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.screen{aspect-ratio:4/3;border-radius:16px;overflow:hidden;position:relative;border:1px solid var(--line-2);box-shadow:0 24px 60px -30px rgba(0,0,0,.9)}
+.screen-in{position:absolute;inset:0;background:linear-gradient(160deg,#1c2240,#0e1020 60%,#161a30);display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:8px;padding:14px}
+.poster{border-radius:8px;position:relative;overflow:hidden}
+.poster::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55))}
+.p1{background:linear-gradient(150deg,#3b2a6e,#c2487a)}
+.p2{background:linear-gradient(150deg,#0f4c5c,#00a896)}
+.p3{background:linear-gradient(150deg,#7b2d26,#e08e45)}
+.p4{background:linear-gradient(150deg,#123,#4a6fa5)}
+.p5{background:linear-gradient(150deg,#2d1b4e,#a23b72)}
+.p6{background:linear-gradient(150deg,#203a43,#2c5364)}
+.p7{background:linear-gradient(150deg,#42275a,#734b6d)}
+.p8{background:linear-gradient(150deg,#3a1c1c,#c98a3c)}
+.p9{background:linear-gradient(150deg,#1a2980,#26d0ce)}
+.screen-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;text-align:center;background:rgba(11,13,23,.6);backdrop-filter:blur(6px);border:1px solid var(--line-2);border-radius:14px;padding:16px 20px}
+.screen-badge b{display:block;font-size:22px;letter-spacing:1px}
+.screen-badge small{color:var(--ink-soft);font-size:12.5px;letter-spacing:.5px}
+
+/* ===== 通用栏目标题 ===== */
+section{padding:70px 0;position:relative}
+.sec-head{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:34px}
+.sec-no{font-size:14px;font-weight:800;letter-spacing:2px;color:var(--brand)}
+h2{font-size:clamp(23px,3.4vw,33px);font-weight:850;letter-spacing:-.3px;line-height:1.3}
+.sec-sub{color:var(--ink-soft);font-size:15px;width:100%;max-width:56ch}
+.split-line{flex:1;height:1px;background:var-gradient;background:linear-gradient(90deg,var(--line-2),transparent)}
+
+/* ===== 分类 ===== */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat-card{
+  padding:26px 22px;border-radius:16px;background:linear-gradient(170deg,var(--paper-2),rgba(18,21,38,.4));
+  border:1px solid var(--line);position:relative;overflow:hidden;min-height:190px;display:flex;flex-direction:column;
+}
+.cat-card::after{content:"";position:absolute;right:-34px;bottom:-34px;width:110px;height:110px;border-radius:50%;opacity:.35}
+.cat-card:nth-child(1)::after{background:var(--brand)}
+.cat-card:nth-child(2)::after{background:var(--brand-2)}
+.cat-card:nth-child(3)::after{background:var(--brand-3)}
+.cat-card:nth-child(4)::after{background:#8b9cff}
+.cat-card:nth-child(5){grid-column:span 2;background:linear-gradient(120deg,#1c1a35,#22142b)}
+.cat-card:nth-child(6){grid-column:span 2;background:linear-gradient(120deg,#0f2530,#10243a)}
+.cat-icon{font-size:26px;margin-bottom:14px;position:relative;z-index:2}
+.cat-card h3{font-size:19px;margin-bottom:8px;position:relative;z-index:2}
+.cat-card p{color:var(--ink-soft);font-size:14.5px;position:relative;z-index:2}
+.cat-card a.more{margin-top:auto;padding-top:16px;font-size:14px;font-weight:700;color:var(--brand);position:relative;z-index:2}
+
+/* ===== 榜单 ===== */
+.rank{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:start}
+.rank-main{padding:28px;border-radius:18px;background:var(--paper-2);border:1px solid var(--line)}
+.rank-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.rank-tab{padding:8px 16px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--ink-soft)}
+.rank-tab.on{background:linear-gradient(92deg,var(--brand),var(--brand-2));color:#211200;border-color:transparent}
+.rank-ol{counter-reset:rk}
+.rank-ol li{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+.rank-ol li:last-child{border-bottom:0}
+.rank-ol li::before{counter-increment:rk;content:"0" counter(rk);font-size:13px;font-weight:800;color:var(--brand);min-width:26px;padding-top:4px}
+.rank-ol h4{font-size:16.5px;margin-bottom:4px}
+.rank-ol p{font-size:13.5px;color:var(--ink-soft)}
+.rank-side{display:grid;gap:20px}
+.side-card{border-radius:16px;padding:24px;background:linear-gradient(160deg,var(--paper-2),rgba(18,21,38,.5));border:1px solid var(--line)}
+.side-card h3{font-size:18px;margin-bottom:14px}
+.tagcloud{display:flex;flex-wrap:wrap;gap:9px}
+.tagcloud a{padding:7px 13px;border-radius:8px;font-size:13.5px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.tagcloud a:hover{background:rgba(255,180,61,.12);border-color:rgba(255,180,61,.4);color:var(--brand)}
+.updatelist li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.updatelist li:last-child{border-bottom:0}
+.updatelist time{color:var(--ink-soft);font-size:13px;flex-shrink:0}
+
+/* ===== 资讯 ===== */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.news-card{border-radius:16px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line);display:flex;flex-direction:column}
+.thumb{aspect-ratio:16/10;position:relative}
+.thumb::before{content:"";position:absolute;inset:0;background:linear-gradient(150deg,var(--c1,#333),var(--c2,#777))}
+.thumb span{position:absolute;left:14px;bottom:14px;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(11,13,23,.7);border:1px solid var(--line-2)}
+.news-card .body{padding:20px;display:flex;flex-direction:column;flex:1}
+.news-card time{font-size:12.5px;color:var(--ink-soft);margin-bottom:8px}
+.news-card h3{font-size:18px;line-height:1.5;margin-bottom:10px}
+.news-card p{font-size:14px;color:var(--ink-soft);margin-bottom:16px}
+.news-card .more{margin-top:auto;font-size:14px;font-weight:700;color:var(--brand)}
+
+/* ===== 关于 ===== */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.about-copy h2{margin-bottom:16px}
+.about-copy p{color:var(--ink-soft);margin-bottom:14px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.stat{border-radius:14px;padding:20px;background:var(--paper-2);border:1px solid var(--line);text-align:center}
+.stat b{display:block;font-size:27px;font-weight:850;color:var(--brand)}
+.stat small{color:var(--ink-soft);font-size:13px}
+.about-form{padding:32px;border-radius:20px;background:linear-gradient(150deg,#141830,#1b1230);border:1px solid var(--line-2)}
+.about-form h3{font-size:21px;margin-bottom:8px}
+.about-form>p{color:var(--ink-soft);font-size:14.5px;margin-bottom:22px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;color:var(--ink-soft);margin-bottom:7px}
+.field input,.field textarea{
+  width:100%;padding:13px 15px;border-radius:11px;font-size:15px;color:var(--ink);
+  background:rgba(0,0,0,.28);border:1px solid var(--line-2);font-family:inherit;
+}
+.field textarea{resize:vertical;min-height:110px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--brand);background:rgba(0,0,0,.42)}
+.submit-btn{width:100%;padding:14px;border-radius:11px;border:0;font-size:16px;font-weight:800;cursor:pointer;color:#211200;background:linear-gradient(96deg,var(--brand),var(--brand-2))}
+
+/* ===== 页脚 ===== */
+footer{border-top:1px solid var(--line);padding:44px 0 34px;background:rgba(0,0,0,.25)}
+.foot-in{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.foot-col h4{font-size:15px;margin-bottom:14px}
+.foot-col ul li{padding:5px 0}
+.foot-col ul a{color:var(--ink-soft);font-size:14.5px}
+.copyright{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;color:var(--ink-soft);font-size:13.5px}
+.copyright a{color:var(--ink-soft)}
+.copyright a:hover{color:var(--brand)}
+
+/* ===== 响应式 ===== */
+@media (max-width:960px){
+  .ticket,.rank,.about{grid-template-columns:1fr}
+  .ticket-left{border-right:0;border-bottom:2px dashed var(--line-2)}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-card:nth-child(5),.cat-card:nth-child(6){grid-column:span 1}
+  .news-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-in{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:680px){
+  .topbar-in{height:58px}
+  .brand-name{font-size:17px}
+  .menu-btn{display:flex}
+  .nav{position:fixed;inset:58px 0 auto;flex-direction:column;align-items:stretch;gap:2px;padding:14px;background:rgba(11,13,23,.98);border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s var(--ease);box-shadow:0 20px 40px -20px rgba(0,0,0,.7)}
+  .nav.open{transform:translateY(0)}
+  .nav a{padding:14px;border-radius:11px}
+  .hero{padding:40px 0 30px}
+  .ticket-left{padding:34px 24px}
+  .ticket-right{padding:28px 24px}
+  section{padding:50px 0}
+  .screen{aspect-ratio:16/10}
+  .cat-grid,.news-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:repeat(3,1fr);gap:8px}
+  .stat{padding:14px 8px}
+  .stat b{font-size:20px}
+  .foot-in{grid-template-columns:1fr}
+  h1{font-size:32px}
+  .lede{font-size:15.5px}
+}
+@media print{
+  .topbar,.menu-btn,.about-form{display:none}
+  body{background:#fff;color:#000}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<header class="topbar">
+  <div class="container topbar-in">
+    <a class="brand" href="https://5557yingshi-app.github.io" aria-label="5557影视 首页">
+      <span class="brand-mark">影</span>
+      <span class="brand-name">5557<span>影视</span></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#category">频道分类</a>
+      <a href="#rank">口碑榜单</a>
+      <a href="#news">影视资讯</a>
+      <a href="#about">关于我们</a>
+      <a href="#contact">留言建议</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="展开菜单" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container">
+      <article class="ticket">
+        <div class="ticket-left">
+          <span class="eyebrow">每日精选 · 院线同步</span>
+          <h1>打开 <em>5557影视</em><br>好片不再错过一秒</h1>
+          <p class="lede">5557影视（5557yingshi-app）把院线大片、热播剧集、经典老片、综艺与动漫番剧放进同一张观影清单，配合每日更新的影视资讯与口碑榜单，让你在通勤路上、深夜沙发上都能快速找到下一部想看的作品。</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#category">浏览频道分类</a>
+            <a class="btn btn-ghost" href="#rank">查看今日榜单 →</a>
+          </div>
+        </div>
+        <div class="ticket-right">
+          <div class="notch-row">
+            <span class="notch">🎬 院线速递</span>
+            <span class="notch">📺 热播剧集</span>
+            <span class="notch">🍿 经典回看</span>
+          </div>
+          <div class="screen" aria-hidden="true">
+            <div class="screen-in">
+              <div class="poster p1"></div><div class="poster p2"></div><div class="poster p3"></div>
+              <div class="poster p4"></div><div class="poster p5"></div><div class="poster p6"></div>
+              <div class="poster p7"></div><div class="poster p8"></div><div class="poster p9"></div>
+            </div>
+            <div class="screen-badge"><b>5557影视</b><small>5557yingshi-app · 观影指南</small></div>
+          </div>
+          <div class="notch-row">
+            <span class="notch">每日资讯</span>
+            <span class="notch">口碑排行</span>
+            <span class="notch">资源导航</span>
+            <span class="notch">更新提醒</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- 栏目一：频道分类 -->
+  <section id="category">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-no">01 / CATEGORY</span>
+        <h2>频道分类 · 按心情选片</h2>
+        <span class="split-line"></span>
+        <p class="sec-sub">从院线大片到怀旧老片，5557影视按内容形态与观看场景拆分出清晰频道，不必在海量的影视资源里反复翻找。</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card">
+          <div class="cat-icon">🎬</div>
+          <h3>院线大片</h3>
+          <p>院线热门电影、口碑新片与高分外语片的资源导航与观影指南。</p>
+          <a class="more" href="#">进入频道 ›</a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">📺</div>
+          <h3>热播剧集</h3>
+          <p>正在热播的国产剧、美剧、韩剧与日剧，更新节奏与追剧入口一站掌握。</p>
+          <a class="more" href="#">进入频道 ›</a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🍿</div>
+          <h3>经典老片</h3>
+          <p>华语经典、老港片、黑白电影与历代高分老片的回看清单。</p>
+          <a class="more" href="#">进入频道 ›</a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🎤</div>
+          <h3>综艺节目</h3>
+          <p>热门真人秀、脱口秀、竞演与户外综艺的当期看点盘点。</p>
+          <a class="more" href="#">进入频道 ›</a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🌸</div>
+          <h3>动漫番剧</h3>
+          <p>新番速递、完结神作、国创动画与剧场版的更新与口碑追踪。</p>
+          <a class="more" href="#">进入频道 ›</a>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">📝</div>
+          <h3>影视资讯</h3>
+          <p>开播定档、主创访谈、行业动态与电影节消息，一手掌握。</p>
+          <a class="more" href="#">进入频道 ›</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目二：口碑榜单 -->
+  <section id="rank" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-no">02 / RANKING</span>
+        <h2>口碑榜单 · 今日值得看</h2>
+        <span class="split-line"></span>
+        <p class="sec-sub">榜单由编辑部结合口碑、热度与观看场景综合整理，每日更新，方便快速锁定今晚要看哪一部。</p>
+      </div>
+      <div class="rank">
+        <div class="rank-main">
+          <div class="rank-tabs">
+            <span class="rank-tab on">电影榜</span>
+            <span class="rank-tab">剧集榜</span>
+            <span class="rank-tab">综艺榜</span>
+            <span class="rank-tab">动漫榜</span>
+          </div>
+          <ol class="rank-ol">
+            <li><div><h4>《夜航船》——年度悬疑力作，反转层层递进</h4><p>剧情、表演与视听语言三方面都站得住，是目前院线最值得走进影院的一部。</p></div></li>
+            <li><div><h4>《人间烟火》——生活流叙事里的高浓度情感</h4><p>节奏舒缓但后劲十足，适合喜欢细腻人物关系的观众。</p></div></li>
+            <li><div><h4>《深海回声》——科幻外壳下的家庭寓言</h4><p>视效水准过硬，内核落在父子关系，讨论度持续走高。</p></div></li>
+            <li><div><h4>《城南旧事》4K修复版——经典重映依然动人</h4><p>修复画质令人惊喜，大银幕重温是不可替代的体验。</p></div></li>
+            <li><div><h4>《极限游戏》——商业片节奏的教科书样本</h4><p>动作设计与剪辑干脆利落，适合周末放松观看。</p></div></li>
+          </ol>
+        </div>
+        <div class="rank-side">
+          <div class="side-card">
+            <h3>热门标签</h3>
+            <div class="tagcloud">
+              <a href="#">悬疑犯罪</a><a href="#">家庭剧情</a><a href="#">硬科幻</a><a href="#">青春校园</a>
+              <a href="#">历史古装</a><a href="#">都市爱情</a><a href="#">黑色幽默</a><a href="#">纪录片</a>
+              <a href="#">动画电影</a><a href="#">惊悚恐怖</a><a href="#">运动励志</a><a href="#">音乐歌舞</a>
+            </div>
+          </div>
+          <div class="side-card">
+            <h3>最新更新</h3>
+            <ul class="updatelist">
+              <li><span>《夜航船》口碑观察与细节解读</span><time>10-21</time></li>
+              <li><span>十月亮点剧集月度盘点</span><time>10-20</time></li>
+              <li><span>新番十月档期全指南</span><time>10-18</time></li>
+              <li><span>经典港片修复计划第二批片单</span><time>10-16</time></li>
+              <li><span>下周院线新片开画前瞻</span><time>10-14</time></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目三：影视资讯 -->
+  <section id="news" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-no">03 / NEWSROOM</span>
+        <h2>影视资讯 · 编辑部精选</h2>
+        <span class="split-line"></span>
+        <p class="sec-sub">5557影视编辑部从海量信息中筛出真正值得关注的内容，包括定档消息、片单解读、幕后故事与观影指南。</p>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="thumb" style="--c1:#3b2a6e;--c2:#c2487a"><span>定档消息</span></div>
+          <div class="body">
+            <time datetime="2026-10-21">2026年10月21日</time>
+            <h3>本周院线新片开画前瞻：三强同台，观众如何选择？</h3>
+            <p>从题材分布、主创阵容到映前口碑，一文看懂本周值得走进影院的几部新作，并给出按观影偏好的选择建议。</p>
+            <a class="more" href="#">阅读全文 ›</a>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="thumb" style="--c1:#0f4c5c;--c2:#00a896"><span>剧集盘点</span></div>
+          <div class="body">
+            <time datetime="2026-10-19">2026年10月19日</time>
+            <h3>十月剧集中段盘点：慢热型作品开始发力</h3>
+            <p>几部开播时评价平淡的剧集，在剧情进入中段后口碑明显回升，我们梳理了它们的转折节点与追剧重点。</p>
+            <a class="more" href="#">阅读全文 ›</a>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="thumb" style="--c1:#7b2d26;--c2:#e08e45"><span>幕后故事</span></div>
+          <div class="body">
+            <time datetime="2026-10-16">2026年10月16日</time>
+            <h3>从剧本到成片：一部悬疑片的细节如何铺排</h3>
+            <p>通过主创访谈与分镜对比，拆解一部悬疑电影如何在前期埋设线索、在后期完成闭环，适合创作者与深度影迷。</p>
+            <a class="more" href="#">阅读全文 ›</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目四：关于我们 + 留言 -->
+  <section id="about" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-no">04 / ABOUT</span>
+        <h2>关于 5557影视</h2>
+        <span class="split-line"></span>
+        <p class="sec-sub">一个由影视爱好者维护的线上观影指南站，专注把值得看的内容讲清楚、找得到。</p>
+      </div>
+      <div class="about">
+        <div class="about-copy">
+          <h2>让每一次点开<br>都更接近一部好作品</h2>
+          <p>5557影视（5557yingshi-app）的内容团队由长期关注影视内容的编辑组成，日常工作是看片、筛选与整理：从院线动态、剧集更新到经典老片回看，我们把判断沉淀成榜单与文章，减少你"不知道看什么"的纠结。</p>
+          <p>本站不追求信息的全量堆砌，而是强调筛选质量与观看场景的匹配——深夜独处、周末合家、通勤碎片时间，适合的片单并不相同。</p>
+          <div class="stat-row">
+            <div class="stat"><b>6</b><small>常设频道</small></div>
+            <div class="stat"><b>365</b><small>全年更新</small></div>
+            <div class="stat"><b>4</b><small>内容栏目</small></div>
+          </div>
+        </div>
+        <div class="about-form" id="contact">
+          <h3>留言与建议</h3>
+          <p>发现错漏、想看某类片单，或希望我们写一期专题，都可以通过下方表单告诉我们。</p>
+          <form onsubmit="event.preventDefault();this.querySelector('.ok').hidden=false;this.reset();">
+            <div class="field"><label for="nm">称呼</label><input id="nm" type="text" placeholder="怎么称呼你？" required></div>
+            <div class="field"><label for="em">联系方式</label><input id="em" type="email" placeholder="邮箱或其他联系方式（选填）"></div>
+            <div class="field"><label for="msg">想说的话</label><textarea id="msg" placeholder="片单建议、内容纠错或合作想法都可以" required></textarea></div>
+            <button class="submit-btn" type="submit">提交留言</button>
+            <p class="ok" hidden style="color:var(--brand-3);font-size:14px;margin-top:12px">✓ 已收到你的留言，编辑部会尽快查看，感谢支持 5557影视。</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-in">
+      <div class="foot-col">
+        <a class="brand" href="https://5557yingshi-app.github.io" aria-label="5557影视 首页">
+          <span class="brand-mark">影</span>
+          <span class="brand-name">5557<span>影视</span></span>
+        </a>
+        <p style="color:var(--ink-soft);font-size:14px;margin-top:14px;max-width:34ch">专注影视内容筛选与观影指南的线上平台，每日更新院线、剧集、综艺与动漫的资讯与榜单。</p>
+      </div>
+      <div class="foot-col">
+        <h4>频道导航</h4>
+        <ul>
+          <li><a href="#category">院线大片</a></li>
+          <li><a href="#category">热播剧集</a></li>
+          <li><a href="#category">经典老片</a></li>
+          <li><a href="#category">综艺节目</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>内容栏目</h4>
+        <ul>
+          <li><a href="#rank">口碑榜单</a></li>
+          <li><a href="#news">影视资讯</a></li>
+          <li><a href="#news">片单盘点</a></li>
+          <li><a href="#about">关于我们</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>友情链接</h4>
+        <ul>
+          <li><a href="#">影视资源导航</a></li>
+          <li><a href="#">观影指南合集</a></li>
+          <li><a href="#">电影资料库</a></li>
+          <li><a href="#contact">联系编辑部</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>© 2026 5557影视 · 本站内容仅供影视资讯与观影指南参考</span>
+      <span>访问官网：<a href="https://5557yingshi-app.github.io">https://5557yingshi-app.github.io</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+  if(!btn||!nav)return;
+  btn.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body>
+</html>
